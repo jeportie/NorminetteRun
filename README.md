@@ -19,7 +19,7 @@ Run the following command to install the plugin:
 ### Manual Installation
     
 Clone the repository:
-git clone https://github.com/yourusername/NorminetteRun.git ~/.vim/pack/plugins/start/NorminetteRun
+git clone https://github.com/jeromeDev94/NorminetteRun.git ~/.vim/pack/plugins/start/NorminetteRun
 
 Add the following lines to your .vimrc:
 -  " Define the leader key if not already defined

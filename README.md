@@ -33,7 +33,7 @@ Add the following lines to your .vimrc:
 -  nnoremap <Leader>n :NorminetteRun<CR>
 
 ## Usage
-- Use \n to run Norminette on the current file.
+- Save the file or use \n to run Norminette on the current file.
 - Move the cursor to a line with an error to see the Norminette error message in the command line.
 - Errors will be highlighted and indicated with a red dot in the gutter.
 

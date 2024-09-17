@@ -6,10 +6,15 @@ NorminetteRun is a Vim plugin that integrates the Norminette coding style checke
 
 - Highlights Norminette errors in the buffer.
 - Displays Norminette error messages in the command line when the cursor is on a line with an error.
-- Automatically runs Norminette on text changes.
+- Automatically runs Norminette on buffer writes.
 - Adds a red dot in the gutter for lines with errors.
 
 ## Installation
+
+### Using Vundle
+
+In .vimrc:
+Plugin 'jeportie/NorminetteRun'
 
 ### Using the Install Script
 

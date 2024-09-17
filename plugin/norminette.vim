@@ -17,6 +17,10 @@ let s:norminette_errors = {}
 
 " Function to run Norminette on the current file
 function! NorminetteRun()
+    " Ensure the syntax file is loaded
+    silent! syntax enable
+    runtime! syntax/norminette.vim
+
     let l:filename = expand('%:p')
     let l:output = system('norminette ' . l:filename)
     " Clear previous error messages
@@ -25,7 +29,6 @@ function! NorminetteRun()
     execute 'sign unplace * group=norminette'
     call s:HighlightIssues(l:output)
 endfunction
-
 " Function to highlight issues reported by Norminette
 function! s:HighlightIssues(output)
     call clearmatches()
@@ -57,15 +60,6 @@ function! s:ShowNorminetteError()
     endif
 endfunction
 
-" Function to save the buffer and run Norminette if an error line is changed
-function! s:AutoRunNorminette()
-    let l:lnum = line('.')
-    if has_key(s:norminette_errors, l:lnum) || getline(l:lnum) =~ '\v^\s*$'
-        write
-        call NorminetteRun()
-    endif
-endfunction
-
 " Function to clear errors from the dictionary if fixed
 function! s:ClearFixedErrors()
     for l:lnum in keys(s:norminette_errors)
@@ -83,11 +77,11 @@ execute 'sign define norminetteErrorSign text=● texthl=Error'
 " Create a command to run the Norminette function
 command! NorminetteRun call NorminetteRun()
 
+" Map <leader>n to run Norminette manually
+nnoremap <leader>n :NorminetteRun<CR>
+
 " Autocmd to show error message when the cursor moves
 autocmd CursorMoved * call s:ShowNorminetteError()
 
-" Autocmd to run Norminette automatically on text change
-autocmd TextChanged,TextChangedI * call s:AutoRunNorminette()
-
-" Autocmd to clear fixed errors from the dictionary on save
-autocmd BufWritePost * call s:ClearFixedErrors()
+" Run Norminette on file save, but don't auto-save on text change
+autocmd BufWritePost * call NorminetteRun()

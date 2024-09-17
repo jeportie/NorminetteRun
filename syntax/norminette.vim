@@ -12,5 +12,7 @@
 
 " ~/.vim/syntax/norminette.vim
 
-" Define a custom highlight group for Norminette errors with yellow background and overline
-highlight NorminetteError ctermbg=yellow guibg=yellow term=standout cterm=bold gui=bold
+" Define a custom highlight group for Norminette errors with a red wavy underline
+if !exists('highlight NorminetteError')
+    highlight NorminetteError cterm=underline gui=undercurl guisp=red
+endif

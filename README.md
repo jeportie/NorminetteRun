@@ -1,4 +1,4 @@
-# NorminetteRun
+![Screenshot from 2024-10-29 09-40-10](https://github.com/user-attachments/assets/70acd34b-11c7-4b7f-992b-6c09dc50177f)
 
 **NorminetteRun** is a Vim plugin designed to seamlessly integrate the Norminette coding style checker into your workflow. 
 It highlights code style issues directly in the buffer and displays error messages within the Vim interface.
